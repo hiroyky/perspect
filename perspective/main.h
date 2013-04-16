@@ -3,6 +3,6 @@
 
 #include <opencv2/opencv.hpp>
 
-cv::Mat* perspect(cv::Mat* src, double angle);
+cv::Mat* perspect(cv::Mat* src, double angle, int distance);
 
 #endif
