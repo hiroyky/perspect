@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 	cv::Mat src = cv::imread(argv[1]);
 	cv::Mat* dst = perspect(&src, 90.0 - std::strtod(argv[3], &ends), std::atoi(argv[4]));
 	cv::imwrite(argv[2], *dst);
-	cv::imshow("dst", *dst);
+	//cv::imshow("dst", *dst);
 	cv::waitKey();
 	return 1;
 }
