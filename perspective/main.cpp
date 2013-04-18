@@ -7,13 +7,14 @@
 #include "stdfx.h"
 #include <iostream>
 #include <math.h>
+#include <stdexcept>
 #include "main.h"
 
 int main(int argc, char *argv[]) {
 	if(argc < 5) {
-		throw std::exception("Exception: args must be 4.");
+		throw "Exception: args must be 4.";
 	}
-	
+
 	char* ends;
 
 	cv::Mat src = cv::imread(argv[1]);
@@ -33,7 +34,7 @@ cv::Mat* perspect(cv::Mat* src, double angle, int distance) {
 	double dstCols = abs((src -> cols) / (2 * tan(angle)));
 	cv::Mat* dst = new cv::Mat(dstRows, dstCols, CV_32F);
 	//cv::Mat* dst = new cv::Mat(*src);
-	
+
 	cv::Point2f srcPoint[4], dstPoint[4];
 	srcPoint[0] = cv::Point2f(0, 0);
 	srcPoint[1] = cv::Point2f(src -> cols, 0.0);
@@ -47,7 +48,7 @@ cv::Mat* perspect(cv::Mat* src, double angle, int distance) {
 
 	std::cout << dstCols << "," << dstRows << std::endl;
 
-	const cv::Mat matrix = cv::getPerspectiveTransform(srcPoint, dstPoint);		
-	cv::warpPerspective(*src, *dst, matrix, cv::Size(dst->cols, dst->rows));	
+	const cv::Mat matrix = cv::getPerspectiveTransform(srcPoint, dstPoint);
+	cv::warpPerspective(*src, *dst, matrix, cv::Size(dst->cols, dst->rows));
 	return dst;
 }
