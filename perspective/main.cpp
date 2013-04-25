@@ -12,7 +12,10 @@
 
 int main(int argc, char *argv[]) {
 	if(argc < 5) {
-		throw "Exception: args must be 4.";
+      std::cout << "Usage" << std::endl << endl;
+      std::cout << args[0] << " SourceImage DestImage Angle Distance" << std::endl;
+      std::cout << "Example: " << args[0] << " source.jpg new.jpg 15 1000" << std::endl;
+      return;
 	}
 
 	char* ends;
@@ -20,8 +23,6 @@ int main(int argc, char *argv[]) {
 	cv::Mat src = cv::imread(argv[1]);
 	cv::Mat* dst = perspect(&src, 90.0 - std::strtod(argv[3], &ends), std::atoi(argv[4]));
 	cv::imwrite(argv[2], *dst);
-	//cv::imshow("dst", *dst);
-	cv::waitKey();
 	return 1;
 }
 
@@ -33,7 +34,6 @@ cv::Mat* perspect(cv::Mat* src, double angle, int distance) {
 	double dstRows = abs(src -> rows / tan(angle));
 	double dstCols = abs((src -> cols) / (2 * tan(angle)));
 	cv::Mat* dst = new cv::Mat(dstRows, dstCols, CV_32F);
-	//cv::Mat* dst = new cv::Mat(*src);
 
 	cv::Point2f srcPoint[4], dstPoint[4];
 	srcPoint[0] = cv::Point2f(0, 0);
