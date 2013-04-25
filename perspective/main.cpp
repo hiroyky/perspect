@@ -12,10 +12,10 @@
 
 int main(int argc, char *argv[]) {
 	if(argc < 5) {
-      std::cout << "Usage" << std::endl << endl;
-      std::cout << args[0] << " SourceImage DestImage Angle Distance" << std::endl;
-      std::cout << "Example: " << args[0] << " source.jpg new.jpg 15 1000" << std::endl;
-      return;
+      std::cout << "Usage" << std::endl << std::endl;
+      std::cout << argv[0] << " SourceImage DestImage Angle Distance" << std::endl;
+      std::cout << "Example: " << argv[0] << " source.jpg new.jpg 15 1000" << std::endl;
+      return 0;
 	}
 
 	char* ends;
